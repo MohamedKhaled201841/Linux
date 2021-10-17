@@ -1,0 +1,77 @@
+chapter 12,13,14
+------------------
+tar >>>> -c (create archive) , -t (list contents of archive) , -x (extract archive)
+-v is commonoly used with tar to see what is being added or extracted.
+f file name (file name of the archive to operate on)
+
+notes:
+-no need to use - with tar options.
+-tar will overwrite and archive if the same name exists.
+
+ex: tar cf myarchive.tar file1 file2 file3 >>>> to create a tar archive
+ex: tar tf myarchive.tar   >>>> list the contents of the archive
+
+notes:
+-if root extracts files >> original user and group are preserved, else, the extractor owns them.
+-to prevent the subtracting of umask , use -p when extracting an archive.
+
+use: 
+z for gzip compression
+j for bzip2 compression
+J for xz compression
+
+ex >>>>>>>>>>   tar czf /root/etcbackup.tar.gz /etc
+to extract >>   tar xzf /root/etcbackup.tar.gz
+
+note:
+you can use the compression methods independently to compress and decompress like:
+
+gzip etc.tar  , gunzip /tmp/etc.tar.gz
+bzip2 etc.tar , bunzip2 /tmp/etc.tar.bz2
+xz etc.tar , unxz /tmp/etc.tar.xz
+
+##############################################################################################
+secure copy
+------------
+scp (from) (to)
+ex: scp /etc/passwd /etc/shadow remotehost:/home
+ex: scp remotehost:/home/myfile /root
+
+note: to copy a directory recursively , use -r
+
+READ ABOUT sftp AND rsync METHODS TO TRANSFER FILES BETWEEN systems.
+##############################################################################################
+Chapter 13
+-----------
+RPM package files are named using a combination of the package name-version-release-architecture
+
+yum repolist
+yum update  ,, yum update package name
+yum list installed
+yum search all 'web server'
+yum info httpd
+yum install httpd
+yum remove httpd
+yum localinstall packagefile.rpm
+
+READ ABOUT YUM GROUPS
+###############################################################################################
+Chapter 14
+------------
+df -h
+du -h /var/log
+
+blkid
+mount /dev/sdb1 /mnt/mydata
+umount /mnt/mydata    >>> to unmount, the mount point shoud not be used by any proccess
+lsof /mnt/mydata
+#######################################
+
+ls -l   >>>> shows hard link count
+ln newfile.txt /tmp/newfile-hlink.txt
+
+ln -s myfile.txt /tmp/myfile-link.txt
+
+note: a soft link to a missing file is called "dangling soft link"
+
+

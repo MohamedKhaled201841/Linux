@@ -1,0 +1,39 @@
+Name:mohamed khaled ahmed atyaa
+Group:3
+Lab:402
+
+Lab 6
+-----
+Write the appropriate commands to do the following:
+---------------------------------------------------
+1-Tar and compress using bzip2 algorithm the following directory: "/var/log" saving the output to "/root/file1".
+Ans: tar cjf /root/file1 /var/log
+
+
+2-list the contents of the compressed tar file from the last question.
+Ans: tar tf /root/file1
+
+3-Extract the previous compressed tar file to /home
+Ans:cd /home
+    tar xjf /root/file1 
+4-Securely copy the file "/var/log/secure" to "/tmp" on a remote host called DBserver.
+Ans:scp /var/log/secure DBserver@192.168.11.129:/tmp
+
+5-Securely copy the directory "/home" with all its contents to /opt on the same machine.
+Ans:scp scp -r /home /opt
+
+6-Search for the package that includes "netstat" command.
+Ans: yum search netstat
+
+7-How to remove the "Vim" editor from your system?
+Ans:yum remove vim
+
+8-Display the free space available on your system.
+Ans:df -h
+
+9-Mount your CDROM device to "/media/CD".
+Ans:blkit to know the partition of CDROM
+    mount /dev/sr0 /media/CD
+
+10-Create s symbolic link of a file called testfile and put this link in "/opt".
+Ans:ln -s testfile /opt

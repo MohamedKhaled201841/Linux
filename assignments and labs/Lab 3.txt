@@ -1,0 +1,43 @@
+Name:mohamed khaled ahmed atyaa
+Group:3
+Lab:402
+
+Lab3
+-----
+Write the appropriate commands to do the following:
+---------------------------------------------------
+1-using the sympolic method give a file called "newfile" the following permissions: 755
+Ans: chmod 755 newfile
+
+2-using the numeric method give a directory and all its contents the following permissions: u=rw, g=rw, o=r
+Ans: chmod -R 664 directory
+
+3-change the ownership of a file called "myfile" to be owned by a user called "hazal2om" and a group called "CEO".
+Ans: chown hazal2om:CEO newfile
+
+4-change the ownership of a directory called "Docs" and all of its contents only to a group called "Developers"
+  without changing the owner.
+Ans:chown -R :Developers Docs
+
+5-what command is used to kill a proccess immediately (mention two commands)?
+Ans:kill -15 pid  -15 stands for SIGKILL
+    kill -9  pid  -9  stands for SIGTERM
+
+6-what are the default permissions set for a new created file or a directory in linux.
+Ans:  666 (-rw-rw-rw-)
+
+7-allow all users on the system to access and create files on /var using the sticky bit. 
+Ans:chmod 1755 /var/
+
+8-Display the uptime of your system (mention two ways).
+Ans:uptime
+    w
+    top
+
+9-What is a zombie proccess and mention a command to display them.
+Ans:A zombie process: is a child process whose execution is completed but it still has an entry in the process table
+     ps aux | grep 'Z'
+
+10-Display all users logged in to your system and from where they are logged in.
+Ans:w
+    

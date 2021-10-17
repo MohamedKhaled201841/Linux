@@ -1,0 +1,89 @@
+chapter 10,11
+------------------
+-Logs are stored at : /var/log
+-systemd-jornald and rsyslog >>> both handel the syslog messages
+note: systemd journal is kept in /run/log/journal   >>> wipes with restart (kept in memory)
+      if /var/log/journal exists , it will log to that directory instead.(page 243)
+
+/var/log/messages
+/var/log/secure
+/var/log/maillog
+/var/log/cron
+/var/log/boot.log
+
+
+/etc/rsyslog.conf
+note: for changes to take effect, use >>> systemctl restart rsyslog
+-logrotate utility
+
+man 8 logrotate
+
+-analyze a syslog entry (how it looks like in a log file)
+
+tail -f /var/log/syslog
+logger message
+logger 'who'
+
+
+journalctl   >>> shows full system journal
+journalctl -n 5  >>>> display the last 5 log entries.
+journalctl -p priority_name/number >>> display certain priority logs (debug-info-notice-warning-err-crit-alert-emerg)
+ ex: journalctl -p crit
+
+journalctl -f
+journalctl --since yesterday
+journalctl --since " 2014-02-10 20:30:00" --until "2014-02-13 12:00:00"
+journalctl -o verbose
+
+
+timedatectl
+timedatectl list-timezones
+timedatectl set-timezone America/Denver
+timedatectl set-time 10:00:00         >>>> "YYYY-MM-DDhh:mm:ss" format
+timedatectl set-ntp true/false
+######################################################################################
+Chapt. 11 , page 257
+--------------------
+ip addr show ens33
+ip -s link show ens33
+ip route
+ping -c5 8.8.8.8
+tracepath www.google.com
+traceroute www.yahoo.com
+
+netstat -tulpn
+ss -ta
+
+nmtui
+nmcli con show
+nmcli con show --active
+nmcli con show "connection name"
+
+nmcli dev status
+nmcli dev show ens33
+nmcli con add
+nmcli con mod
+
+nmcli con up "ID"
+nmcli con down "ID"
+
+nmcli con del "ID"
+
+vim /etc/sysconfig/network-scripts/ifcfg-ens33
+nmcli con reload
+nmcli con down "ID"
+nmcli con up "ID"
+
+hostnamectl set-hostname new_name
+hostnamectl status
+
+cat /etc/hostname
+
+cat /etc/hosts
+
+cat /etc/resolv.conf
+
+note: if you use DHCP, /etc/resolv.conf will be automatically rewritten when interfaces are started ,
+      use PEERDNS=no  in the interface conf file. (or: nmcli cond mod "ens33" ipv4.ignore-auto-dns yes)
+
+

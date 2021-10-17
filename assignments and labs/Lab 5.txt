@@ -1,0 +1,43 @@
+Name:mohamed khaled ahmed atyaa
+Group:3
+Lab:402
+
+Lab 5
+-----
+Write the appropriate commands to do the following:
+---------------------------------------------------
+1-Display the last 5 lines of the log file that logs cron jobs.
+Ans: tail -f 5 /var/log/cron
+
+
+2-Send a log message using "logger" and where can you find that message written?
+Ans: logger message
+
+3-Display only error logs of the system.
+Ans: cat /var/log/secure | grep Failed this for only who failed to login to the system but for all logs
+     journalctl -p err or with code journalctl -p 3
+
+4-Disply system logs since last week.
+Ans:journalctl --since  "7 days ago"
+
+
+5-Change your system's time zone to Africa/Kampala.
+Ans:timedatectl set-timezone  Africa/Kampala
+
+
+6-Show the route to yahoo.com ?
+Ans: tracepath www.yahoo.com
+
+
+7-Disply the active network ports on your system and what is listening on them.
+Ans:ss -al
+
+8-Display the info of a connection on your system called "Home Con"
+Ans:nmcli con show "Home Con"
+
+
+9-Reload the configuration of a connection and then restart it in one line.
+Ans:systemctl restart network or nmcli con reload
+
+10-Using a command called "date" , display the date of your system 3 years ago.
+Ans:date --date="3 year ago"

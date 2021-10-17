@@ -1,0 +1,58 @@
+chapter 6 & 7
+------------------
+ls -ld /home    >>>> to prevent descending into the directory and see the properties of the directory itself.
+
+symbolic method:
+-----------------
+chmod u/g/o   +-=   rwx   file/dir
+ex: chmod go-rw file1
+ex: chmod a+x file2
+
+Numeric method:
+-----------------
+chmod 777 file/dir
+ex: chmod 750 dir1
+
+
+chmod -R g+rwx dir3   >>>> recursive on entire directory.
+
+###################################################################################################################
+
+chown gamal file5
+chown -R gamal dir9   >>>> Similar to:   chgrp gamal dir9
+chown :finance testdir
+chown ibrahim:HR testdir
+
+Process states >>>> page 183
+
+ps aux
+sleep 10000 &
+(ls /etc | wc -l ) &
+jobs
+fg %1
+ctrl+z   >>>> to suspend a running proccess
+bg %1    >>>> restart the proccess in the background
+
+
+kill -l
+killall command_pattern
+pkill command_pattern
+
+w -f  >>>> display from column
+
+pgrep -l -u gamal
+pkill -SIGKILL -u gamal
+
+pstree -p gamal
+pkill -P process_number
+pkill -SIGKILL -P process_number
+
+
+uptime
+
+fundmental keystrokes in top command
+
+
+Assignment
+-----------
+1-What is the SetUID, SetGID, Sticky Bit and umask command. and how to use them.

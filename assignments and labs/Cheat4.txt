@@ -1,0 +1,75 @@
+chapter 8 & 9
+------------------
+check page 212
+-systemctl command is used to manage different types of systemd objects called units.
+
+-systemctl status name.type    >>>>>> ( was: "service name status" in older releases)
+
+systemctl list-units --type service --all
+systemctl list-unit-files --type service
+systemctl --failed --type=service
+systemctl status sshd
+systemctl is-active sshd
+systemctl is-enabled sshd
+
+systemctl start name
+systemctl stop name
+systemctl restart name
+systemctl try-restart name
+systemctl reload name
+systemctl status name
+systemctl list-units –type service –all
+
+systemctl enable name
+systemctl disable name
+
+systemctl stop cups.service
+systemctl list-dependencies unit
+systemctl list-dependencies unit --reverse
+
+systemctl mask network
+systemctl unmask network
+
+systemctl disable crond.service
+systemctl enable crond.service
+systemctl is-enabled crond.service
+
+########################################################################################
+
+ssh remotehost
+exit
+
+ssh gamal@remotehost
+w
+ssh gamal@remotehost hostname
+
+cat ~/.ssh/known_hosts      >>>>> host IDs
+ls /etc/ssh/*key*
+
+ssh-keygen -t rsa
+ssh root@remotehost mkdir -p .ssh
+cat .ssh/id_rsa.pub | ssh root@remotehost 'cat >> .ssh/authorized_keys'
+ssh root@remotehost "chmod 700 .ssh; chmod 640 .ssh/authorized_keys"
+ssh root@remotehost
+
+another way
+------------
+ssh-keygen
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@remotehost
+ssh remoteserver 'hostname'
+
+
+/etc/ssh/sshd_config   >>>>> #PermitRootLogin yes  >> PermitRootLogin no
+systemctl restart sshd
+
+-to only allow key-based ssh login: 
+PermitRootLogin without-password
+systemctl restart sshd
+
+-to disable password authentication:
+PasswordAuthentication yes  >>>> PasswordAuthentication no
+systemctl restart sshd
+
+
+
+setuid , setgid , stickybit, umask

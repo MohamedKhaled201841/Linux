@@ -1,0 +1,79 @@
+shell prompt 
+=============
+normal user : [user@localhost]$
+super user :  [root@localhost]#
+
+
+commands have 3  basic parts : command to run , option , argument 
+
+example:  cp -r Documents Mydirectory 
+cp : command to copy files/directories 
+-r : recursive ( all contents of directory ) 
+Documents : the directory that I want to copy from
+Mydirectory : the directory that I want to copy to 
+
+$ whoami : to print the current user 
+
+$ su - root : switch user to root user 
+
+- you can combine more than one command in the same line using (;) 
+example :  pwd ; touch file1 
+
+$ Pwd : print working directory
+ 
+$ touch :  used for creating files / updating timestamp for created files 
+
+$ cd : change directory  
+
+$ ls : list the files/directories in the current location  
+
+$ mkdir  : to create a directory 
+
+$mkdir -p : to create a directory inside a parent dirctory that is not created 
+ex: mkdir -p  newdir1/newdir2  if the parent directory was created use ---> mkdir dir1/dir2
+
+$ rmdir : remove an empty directory 
+
+$ passwd : change the current password 
+
+$ rm : remove a file  
+$ rm -r : remove a non-empty directory with its contents 
+
+$ date : to print the current date
+
+$ cal : to print the calendar of the current month  
+
+$ file : to print the type of the given file 
+ex: file /home 
+/home: directory 
+
+$ cat : concatenate - viewing the contents of a file 
+ex:  cat file1 file2 
+
+$ less: to view the contents of large files in the form of pages   ( quit using "q") 
+
+$ more : to view the contents of large files in the form of pages ( takes much time than less  and you can't scroll up  ) 
+
+$ head : view the first 10 lines of a file 
+
+
+$ tail : view the last 10 lines of a file 
+
+note : you can view a different number of lines using ( -n ) option 
+ex: tail -n 3 /etc/passwd 
+
+$ wc : word count - counts lines,words and characters in a file 
+$ wc /etc/passwd 
+$ wc -l /etc/passwd 
+$ wc -c /etc/passwd 
+
+$ history : to print a list of previously executed command 
+!string   !number 
+
+
+Labs email : linuxlabs.ai@gmail.com
+ 
+
+
+
+

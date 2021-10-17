@@ -1,0 +1,47 @@
+Name:mohamed khaled ahmed atyaa
+Group:3
+Lab:402
+
+Lab 4
+-----
+Write the appropriate commands to do the following:
+---------------------------------------------------
+1-List all services on the system whatever is their state.
+Ans: systemctl list-units --all
+
+2-You want to know if sshd service is running or not , redirect your output to /tmp/out.txt
+Ans:  systemctl status  sshd --all | grep "running" > /tmp/out.txt
+
+3-write the two commands required to stop and disable firewalld service.
+Ans: systemctl stop firewalld
+     systemctl stop firewalld
+
+4-Disable a service from being run as a dependency to another service.
+Ans:	systemctl disable service name (firewalld for example)
+
+5-Prevent crond service from being used by any user or even root.
+Ans:systemctl mask crond
+
+6-How to connect to a remote host using SSH protocol ?
+Ans: ssh root@192.168.237.129 for example
+
+7-Display the status of sshd service on a remote server, redirect your output to a file called "status.log"
+Ans:ssh root@192.168.237.129 systemctl status sshd
+
+8-What command is used to generate public/private key files ? and where are they stored by default?
+Ans:ssh-keygen -t rsa
+    /root/.ssh/id_rsa
+
+9-Send a copy of your public key to a remote server by two different ways.
+Ans:ssh-keygen -t rsa
+    ssh root@--ip of the another machine-- mkdir -p .ssh	
+    cat .ssh/id-rsa.pub |ssh root@192.168.273.129 'cat >> .ssh/authorized_keys'
+    ssh root@192.168.273.129 "chmod 700 .ssh ; chmod 640 .ssh/authorized_keys"
+    ssh root@192.168.273.129
+            OR
+    ssh-keygen -t rsa
+    ssh-copy-id -i ~/.ssh/id-rsa.pub root@192.168.237.129
+    ssh root@192.168.237.129
+
+10-terminate your remote logging session.
+Ans:exit

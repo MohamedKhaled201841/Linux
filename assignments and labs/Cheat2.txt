@@ -1,0 +1,65 @@
+chapter 3 & 4 & 5
+------------------
+cp -r /root/dir1 dir2
+cp -r /root/* dir2
+cp file1 file2 file3 /home/gamal
+
+mv file1 file2 file3 /home/gamal
+mv dir1 dir2 /home/gamal
+
+ls *a* , *a , *a
+ls a? , a??b , a???
+
+echo "one plus two equals $[1+2]"
+
+df-h
+man 1 passwd
+man 1 su
+man 5 passwd
+passwd -l, -u
+man man
+man -k "print"
+
+cal > /root/myoutput.txt
+head -n 10 > /etc/shadow /tmp/output.txt
+cat file1 file2 file3 > /tmp/output.txt
+ls -la >> /tmp/output.txt
+tail -n 10 /etc/passwd &> /tmp/output.txt
+
+find /etc -name passwd > /tmp/output 2> /tmp/errors
+find /etc -name passwd &> /tmp/save-both
+find /etc -name passwd >> /tmp/save-both 2>&1
+
+locate
+
+ls -1 /usr/bin | less
+ls | wc -l > /tmp/how-many-files
+ls /etc | head -n 10 > /tmp/top-conf-files
+
+vim
+:set number
+y , d , p , dd ....
+
+
+id
+ps
+ps aux
+su - 
+sudo
+tail /var/log/secure
+cat /etc/sudoers
+wheel
+exit
+echo $HOME
+echo $PATH
+
+usermod -g, -G , -aG
+userdel , -r
+groupadd
+groupmod
+groupdel
+
+
+Assignments
+-----------
+Describe in details the /etc/shadow file [coloums]

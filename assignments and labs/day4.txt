@@ -1,0 +1,136 @@
+chnapter8 : Monitorring and managing linux processes 
+------------------------------------------------------
+
+# pstree : to show the processes in the form of a tree 
+
+- systemd : it is the main process on the system where all the other processes are children to it and it manages all deamons
+
+# systemctl status sshd : to check the status of the service " sshd" d:deamon : a process that runs in the background 
+
+
+- when you apply any change in the configuration file of a process you have to restart the process 
+
+example :  systemctl restart chrond 
+
+# systemctl stop firewalld : stopping firewall deamon 
+
+# systemctl disable firewalld : preventing firewalld deamon from running when the system boots
+
+[root@client ~]# systemctl status firewalld
+● firewalld.service - firewalld - dynamic firewall daemon
+   Loaded: loaded (/usr/lib/systemd/system/firewalld.service; disabled; vendor preset: enabled)
+   Active: inactive (dead)                                    =========
+     Docs: man:firewalld(1)
+
+
+
+#systemctl list-units --type=service : To list all loaded service units
+
+#systemctl list-units --type=service --all : To list all service units
+
+# systemctl list-unit-files --type-service  :  to list all service unit files
+
+# systemctl is-active <service name > :  to check if a service is active or not 
+
+example : 
+# systemctl is-active  sshd 
+
+
+# systemctl is-enabled <service name> :  to check if a service is enabled  or not ( enabled service : starts when the system boots )  
+ 
+example: 
+#  systemctl is-enabled firewalld 
+
+#systemctl list-dependencies <service name > : To list service dependencies
+
+example : 
+
+#systemctl list-dependencies sshd.service
+
+
+#systemctl mask sshd  : to make this service not accessible by any user
+
+[root@client ~]# systemctl status sshd 
+● sshd.service
+   Loaded: masked (/dev/null; bad)
+           ======
+   Active: active (running) since Mon 2021-04-12 10:24:26 EET; 49min ago
+ Main PID: 1054 (sshd)
+   CGroup: /system.slice/sshd.service
+           └─1054 /usr/sbin/sshd -D
+
+#systemctl unmask sshd : to make the service usable and accessible now 
+
+[root@client ~]# systemctl status sshd 
+● sshd.service - OpenSSH server daemon
+   Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; vendor preset: enabled) 
+     Docs: man:sshd(8)
+           man:sshd_config(5)
+ Main PID: 1054 (sshd)
+   CGroup: /system.slice/sshd.service
+           └─1054 /usr/sbin/sshd -D
+
+===========================================================================================================================================
+
+chapter9:configuring and scuring SSH 
+---------------------------------------
+
+# hostname :  to print the host name of the current machine you are logged into 
+
+
+** Ahmed needs to login to hostB
+1-
+		1-Looks up the finger print in ~/.ssh/known_hosts
+		2-If found, will continue
+		3-If not found, asks trust finger print (y/n)?
+			3-1 If answer was no, connetion temrinates
+			3-1 Answer was yes, saves the finger print to ~/.ssh/known_hosts, and continue
+	
+[ahmed@hostA ~]$
+
+# ssh ahmed@192.168.43.128  : to remotely login with user ahmed to machine with ip : 192.168.43.128 
+ 
+[ahmed@hostB ~]$
+[ahmed@hostB ~]$exit 
+logout
+[ahmed@hostA ~]$
+[ahmed@hostA ~]$
+
+# ssh-keygen -t rsa  : generate  key to secure ssh of encryption type rsa
+
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): ---> when you press "Enter" it saves the key in the default path 
+Enter passphrase (empty for no passphrase): 123456
+Enter same passphrase again: 123456
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:Sk4340g4UOmlUONa15Jch191Azbf3p7n0nw27E9z378 root@client.lab.local
+The key's randomart image is:
++---[RSA 2048]----+
+|   .+.  ...  =o..|
+|  .o.o.+..  o o.o|
+|  .ooo= .. .   ..|
+|   +oo .  .    ..|
+|  . o + S       o|
+|     * = o     ..|
+|      + .     .==|
+|              .=@|
+|              .E%|
++----[SHA256]-----+
+
+
+
+#cat .ssh/id_rsa.pub | ssh root@remotehost 'cat >> .ssh/authorized_keys' : take the contents of the file .ssh/id_rsa.pub from 1st machine 
+ and then ssh to the other machine and append the contents of this file to .ssh/authorized_keys on the other machine 
+
+# ssh-copy-id  -i ~/.ssh/id_rsa.pub ahmed@192.168.11.128  --->  to use the public key in ssh to the other machine without the need to use password 
+ 
+
+
+
+#vi /etc/ssh/sshd_config  :  you can edit this configuration file and then restart the sshd service for the edits to take effect 
+> #PermitRootLogin yes  ----> PermitRootLogin no
+#systemctl restart sshd 
+
+- after this edit you can't ssh to this machine using the user : root 

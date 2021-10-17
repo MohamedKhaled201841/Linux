@@ -1,0 +1,174 @@
+To change permissions
+	chmod PERM file(s)
+PERM:
+	symbolic :
+
+			+	
+		u/g/o/a	- r/w/x
+			=
+	u:Owner
+	g:group
+	o:other
+	a:all
+	+: add permission
+	-: remove permission
+	=: set permission
+	r: read
+	w: write
+	x: execute
+
+#ls -l  myfile.txt 
+
+-rw-r--r-- . 1  root root  0 Apr 7  9:30  myfile.txt 
+
+#chmod u+x myfile.txt ----> adding execute permission to user 
+
+-rwxr--r-- . 1  root root  0 Apr 7  9:30  myfile.txt 
+
+ -R can be used  to apply permissions to directory recursivley  ( be careful it might lead to 777 on some files )
+example: 
+
+# chmod -R u+x dir1
+
+
+	Numeric :		
+		r: 4 ---->read
+		w: 2 ----> write 
+		x: 1 ----> execute 
+
+
+example : 
+
+-rw-r--r-- . 1  root root  0 Apr 7  9:30  myfile.txt
+
+# chmod 640  myfile.txt 
+# ls -l myfile.txt 
+
+-rw-r----- . 1  root root  0 Apr 7  9:30  myfile.txt
+
+------------------------------------------------------------------------------------------------------------------------------
+In order to change the owner of file/directory use : chown 
+
+example : 
+
+drwxrwxrwx 2 root root 32 Apr 7 9:30 testdir 
+
+# chown  -R ahmed testdir 
+
+drwxrwxrwx 2 ahmed  root 32 Apr 7 9:30 testdir 
+
+in order to change group ownership use chown  :"group name" 
+
+example : 
+
+-rw-r--r-- . 1  root root  0 Apr 7  9:30  myfile.txt 
+
+# chown   :developers  myfile   ---> changing group ownership only 
+
+-rw-r--r-- . 1  root developers   0 Apr 7  9:30  myfile.txt 
+
+
+-rw-r--r-- . 1  root root  0 Apr 7  9:30  myfile.txt
+
+
+# chown  ahmed:HR   myfile 
+
+-rw-r--r-- . 1  ahmed  HR  0 Apr 7  9:30  myfile.txt
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+# w : this command is used to print the users logged in the system 
+
+
+# w  -f :  option (-f) is used to to toogle display  the FROM column that tells you from which ip do these users login in to the system 
+if it is added by default it will be removed and vice versa 
+
+
+# htop : used to print real-time monitoring of the running processes on the system ( similar to top but with colous ) 
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+# ps  aux : used to take a snapshot of the processes on the system 
+
+Question : - what is the first process that appears when you run this command  ?? (search for it) 
+
+
+---------------------------------------------------------------------------------------------------------------
+
+# sleep  1000   : makes the terminal pause for 1000 second 
+
+
+# sleep 1000 & : makes this process active in the background
+
+
+# ls -l /etc/ | wc -l  &  ---> will send to background the command  wc -l only 
+
+# (ls -l /etc | wc -l ) &  ---> wil send both processes to run in  the background 
+
+# jobs  -----> to list the processes running in the background 
+
+[1]  sleep  1000
+[2]  sleep   100
+[3]  sleep 50000
+
+# fg % [job ID  ]----> send processes back to foreground 
+
+example : 
+ # fg % [3] 
+[3] sleep 50000
+
+CTRL + z : suspends a runnig process 
+
+# bg  ----> sends suspended  processes  to background 
+
+# Kill ----> this command is used to send signals to processes 
+
+# kill -l : list all signals that can be sent to processes
+
+9   :SIGKILL    unblockable  
+15  :SIGTERM    safely shutdown  ( default signal with # kill  PID ) 
+
+example : 
+
+# kill -15  16523   ------> sends 15 signal to process with PID = 16523 ( terminate) 
+
+# killall ----> terminates a pattern of processes 
+
+# pkill ----> (similar to kill) sends signal  to  a process 
+
+example : 
+
+# pkill -SIGTERM  -p 16523 
+
+# pkill -SIGTERM  firefox   ( can be used with process name / command pattern  ) 
+
+# pkill -SIGTERM -u ahmed  ( sends termiante signal to processes run by user ahmed ) 
+
+#prgep  ----> used to grep processes 
+
+#pgrep  -l -u ahmed  ----> to grep the processes that are run by user ahmed 
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+# uptime ---> used to print how the system has been running 
+
+# top ---> to print running processes in real-time
+
+PR   :  priority    ( PR -20 = NI ) 
+NI   :  Nice value 
+VIRT : virtual memory 
+RES  : resident / physical memory 
+SHR  : shared memory  
+S    : process state 
+TIME+: CPU time 
+
+ 
+
+
+
+
+

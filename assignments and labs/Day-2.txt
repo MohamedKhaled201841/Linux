@@ -1,0 +1,90 @@
+$ id : to get info about the user like : the user id,the group id  
+
+$ ip  a : show data about networking of the machine ( ip address , subnet mask )
+
+
+$ echo " Hello world " > file1.txt 
+$ cat file1  
+Hello world 
+
+$ echo " welcome to Linux " >> file1.txt 
+$ cat file1 
+Hello world
+welcome to Linux 
+
+
+$ ls /  cat   > out.txt  2> error.txt  : redirecting output to file out.txt and error to error.tx 
+
+
+$ ls /  cat  &> result.txt : redirecting both error and output to the same file 
+
+
+$ df : to view file system disk space 
+
+$ df -h : adding -h option to view space usage in human-readable format 
+
+$ mv : used to rename or move files 
+
+$ man -k "print" : to print the  man pages that have  a certain  command using keyword 
+
+$ uname: print system iformation 
+
+$ top : display system processess in real time 
+
+# systemctl stop firewalld :  stopping firewall deamon 
+
+# systemctl disable firewalld : disabling firewall deamon so it won't start when the system boots 
+
+# systemctl status firewalld : checking  the status of the firewall deamon 
+
+$ sestatus : checking the status of SElinux 
+
+$ vim file1.txt  : editing the file " file1" using vim 
+
+i : enter insert mode
+v : enter visual mode 
+ESC :wq --> save and quit 
+ESC :q --> quit without saving 
+ESC :q! --> force quit 
+yy : yank --> used for copying a line in vim exec mode 
+p  : paste --> used for pasting  a line in vim exec mode
+
+
+$ find  : used to search for files 
+ex: find / -name  passwd 
+
+$ ps : take a snapshot of running processes 
+ex: ps aux 
+
+
+# useradd  ahmed : adds a new user to the system with name ahmed 
+
+# passwd ahmed   : adding a password to user ahmed 
+
+# usermod -aG wheel ahmed : adding ahmed to wheel group   
+
+check using id command 
+
+# id ahmed 
+
+Now ahmed became an admin user that can run admin commands using "sudo"
+
+# userdel ahmed : deletes user ahmed without deleting its files from /home
+
+# userdel -r ahmed : deletes user ahmed with deleting its files from /home 
+
+# groupadd developers : adds group developers to the system 
+
+# groupmod  : used in modifying group on the system 
+
+---------------------------------------------------------------------------------------------------------------------------------------
+Assignment day-1 : 
+
+1- explain contents of root file system : example boot , var , tmp , ...etc 
+
+2- explain :x: in  file /etc/passwd 
+ ----------------------------------------------------------------------------------------------------------------------------------------
+
+Assignment  day -2 : 
+
+Describe in details the contents of file /etc/shadow 
